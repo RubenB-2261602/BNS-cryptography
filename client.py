@@ -25,7 +25,7 @@ server_pubkey_id, server_pubkey = parse_hello(server_hello)
 
 # --- Meerdere DATA berichten in één sessie ---
 for i in range(3): 
-    data_pkt = build_data_packet(f"Testbericht {i}".encode(), ksession, rsa_key, pubkey_id)
+    data_pkt = build_data_packet(f"Testbericht {i}".encode(), ksession, rsa_key, pubkey_id, b'\x42')
     sock.sendto(data_pkt, (UDP_IP, UDP_PORT))
     print(f"DATA verstuurd: Testbericht {i}")
     time.sleep(0.5)  # Kleine delay voor de leesbaarheid
